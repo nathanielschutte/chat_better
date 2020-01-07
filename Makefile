@@ -6,15 +6,24 @@ STARGET = server
 
 SDIR = src
 
+all: $(CTARGET).cpp $(STARGET).cpp
+	mkdir bin
+	mv $(CTARGET) bin
+	mv $(STARGET) bin
 
-all: $(CTARGET) $(STARGET)
+$(CTARGET): $(CTARGET).cpp
+	mkdir bin
+	mv $(CTARGET) bin
 
-client: $(CTARGET)
+$(STARGET): $(STARGET).cpp
+	mkdir bin
+	mv $(STARGET) bin
 
-server: $(STARGET)
+$(CTARGET).cpp:
+	$(CC) $(CFLAGS) -o $(CTARGET) $(SDIR)/$(CTARGET).cpp
 
-$(CTARGET): $(CTARGET).c
-	$(CC) $(CFLAGS) -o $(CTARGET) $(CTARGET).c
+$(STARGET).cpp:
+	$(CC) $(CFLAGS) -o $(STARGET) $(SDIR)/$(STARGET).cpp
 
-$(STARGET): $(SDIR)/$(STARGET).c
-	$(CC) $(CFLAGS) -o $(STARGET) $(STARGET).c
+clean:
+	rm -r bin
