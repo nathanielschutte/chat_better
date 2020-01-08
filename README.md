@@ -1,18 +1,30 @@
 # chat_better
 a real chat program
 
-# run the server
+## run the server
 ```
 make server
-./server [port]
+./bin/server [port]
 ```
 
-# run a client and connect
+## run a client and connect
 ```
 make client
-./client [IP address] [port]
+./bin/client [IP address] [port]
 ```
 
-## an addition log
-working client-server with working make 1/7/20 7:30
-initial commit 1/7/20 4:04
+## Example (same machine)
+### Commandline 1
+```
+make all
+./bin/server 4000
+```
+### Commandline 2
+```
+./bin/client localhost 4000
+```
+
+## Clean build
+```
+make clean
+```
